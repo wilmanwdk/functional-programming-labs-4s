@@ -1,14 +1,12 @@
 module Test where
+import Data.Char
+    
+removePunc :: String -> String
+removePunc str = [c | c <- str, not (c `elem` ",.?!-:;\"\'")]
 
--- 1
-solveQuadratic :: Float -> Float -> Float -> [Float]
-solveQuadratic a b c
-    | a == 0 = [(-c)/b]
-    | b*b-4*a*c > 0 = [(-b+sqrt(b*b-4*a*c))/(2*a), (-b-sqrt(b*b-4*a*c))/(2*a)]
-    | b*b-4*a*c == 0 = [(-b+sqrt(b*b-4*a*c))/(2*a)]
-    | otherwise = []
+strToLower :: String -> String
+strToLower str = [toLower c | c <- str]
 
--- 3
 wordIndexInList' :: [Char] -> [([Char], Int)] -> Int -> Int
 wordIndexInList' word list num
     | null list = -1
@@ -52,4 +50,4 @@ countWords' text wordsDict
 countWords text = countWords' text []
 
 topFiveWordsInText :: [Char] -> [([Char], Int)]
-topFiveWordsInText text = topFiveWords (countWords text)
+topFiveWordsInText text = topFiveWords (countWords (removePunc (strToLower text)))
