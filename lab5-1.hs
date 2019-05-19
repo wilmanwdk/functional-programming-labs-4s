@@ -8,4 +8,14 @@ solveQuadratic a b c
     | otherwise = []
 
 main = do
-    solveQuadratic 1 1 (-6)
+    putStrLn "ax^2+bx+c"
+    putStr "a = "
+    inputA <- getLine
+    putStr "b = "
+    inputB <- getLine
+    putStr "c = "
+    inputC <- getLine
+    let a = (read inputA :: Float)
+    let b = (read inputB :: Float)
+    let c = (read inputC :: Float)
+    print (solveQuadratic a b c)

@@ -51,3 +51,7 @@ countWords text = countWords' text []
 
 topFiveWordsInText :: [Char] -> [([Char], Int)]
 topFiveWordsInText text = topFiveWords (countWords (removePunc (strToLower text)))
+
+main = do
+    text <- readFile("space-oddity.txt")
+    print (topFiveWords (countWords (removePunc (strToLower text))))
